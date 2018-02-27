@@ -1,0 +1,15 @@
+---
+# defaults file for logwatch
+
+logwatch_packages:
+  - logwatch
+
+logwatch_additional_packages: []
+
+logwatch_config_files:
+  - logwatch.conf.j2
+
+logwatch_mail_to: root
+logwatch_mail_from: Logwatch
+logwatch_range: yesterday
+logwatch_detail: med

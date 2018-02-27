@@ -1,0 +1,32 @@
+---
+# tasks file for logwatch
+
+- name: Install logwatch packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ logwatch_packages }}"
+    - "{{ logwatch_additional_packages }}"
+  tags:
+    - package
+    - logwatch
+
+- name: Create Temp Folder
+  file:
+    path: /var/cache/logwatch
+    state: directory
+  tags:
+    - setup
+    - logwatch
+
+- name: Create logwatch configuration
+  when: logwatch_config_files | length > 0
+  template:
+    src: "{{ item }}"
+    dest: "/etc/logwatch/conf/{{ item | basename | replace('.j2', '') }}"
+  with_items:
+    - "{{ logwatch_config_files }}"
+  tags:
+    - config
+    - logwatch
