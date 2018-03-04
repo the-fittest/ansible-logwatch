@@ -13,7 +13,8 @@
   },
   "homepage": "https://github.com/brandfrisch/logwatch#readme",
   "scripts": {
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "commitmsg": "commitlint -e ",
+    "precommit": "yamllint . && ansible-lint ."
   },
   "commitlint": {
     "extends": [
@@ -33,7 +34,7 @@
     "@commitlint/cli": "^6.1.2",
     "@commitlint/config-conventional": "^6.1.2",
     "@semantic-release/exec": "^2.0.1",
-    "husky": "^0.15.0-rc.8",
+    "husky": "^0.14.3",
     "semantic-release": "^13.4.1"
   }
 }
