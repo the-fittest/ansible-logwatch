@@ -16,6 +16,9 @@
   file:
     path: /var/cache/logwatch
     state: directory
+    owner: root
+    group: root
+    mode: 0755
   tags:
     - setup
     - logwatch
@@ -25,6 +28,9 @@
   template:
     src: "{{ item }}"
     dest: "/etc/logwatch/conf/{{ item | basename | replace('.j2', '') }}"
+    owner: root
+    group: root
+    mode: 0644
   with_items:
     - "{{ logwatch_config_files }}"
   tags:
